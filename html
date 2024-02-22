@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-BBKBQ9FXLG"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-BBKBQ9FXLG');
+        </script>
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Ilannagram</title>
+          <style> 
+           </style>
+      
+      </head>
+<body>
+  <img src="ProfileBanner.jpg">
+  
+  <iframe src="https://thunkable.site/w/2a1eTyL3of3wzn-crj-V1" title="IlannaGram" height = 800 width = 400></iframe>
+
+      
+    <h1>Here is the Realtime Data for my App!</h1>
+    
+    <div id="Data">
+
+      <h2 id="User" type="text">User 1</h2>
+      <h3 id="Name" type="text"></h3>
+      <h3 id="PhoneNum" type="text"></h3>
+      <h3 id="Birthday" type="text"></h3>
+      <h3 id="Hobby" type="text"></h3>  <br><br>
+      <img id="ProfilePic" src="" height = "400">
+
+      <h2 id="User2" type="text">User 2</h2>
+      <h3 id="Name2" type="text"></h3>
+      <h3 id="PhoneNum2" type="text"></h3>
+      <h3 id="Birthday2" type="text"></h3>
+      <h3 id="Hobby2" type="text"></h3>  <br><br>
+      <img id="ProfilePic2" src="" height = "400">
+      
+    </div>
+    </center>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+  import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDy45g2xKCSXn8rT0D9KAmFuhwKoskBePM",
+    authDomain: "profileapp-164ea.firebaseapp.com",
+    databaseURL: "https://profileapp-164ea-default-rtdb.firebaseio.com",
+    projectId: "profileapp-164ea",
+    storageBucket: "profileapp-164ea.appspot.com",
+    messagingSenderId: "398026236244",
+    appId: "1:398026236244:web:6ccb25b319f2035b0d68c1",
+    measurementId: "G-XR5112VEH7"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+
+
+  const db = getDatabase();
+  const dbref = ref(db);
+
+  get(child(dbref, "YP3cMW9Q7PNxLnHnqf8eTRnqLEy2/"))
+    .then((snapshot)=>{
+      if(snapshot.exists()){
+        Name.innerHTML = "Name: " + snapshot.val().name;
+        PhoneNum.innerHTML = "Phone Number: " + snapshot.val().phone;
+        Birthday.innerHTML = "Birthday: " + snapshot.val().birthday;
+        Hobby.innerHTML = "Hobby: " + snapshot.val().hobby;
+        ProfilePic.src = snapshot.val().image;
+      } else {
+        alert("No data found");
+      }
+    })
+    .catch((error)=>{
+      alert(error)
+    })
+
+  get(child(dbref, "iflD1DOzR5MXdekfNF4P7KMmVdw2/"))
+    .then((snapshot)=>{
+      if(snapshot.exists()){
+        Name2.innerHTML = "Name: " + snapshot.val().name;
+        PhoneNum2.innerHTML = "Phone Number: " + snapshot.val().phone;
+        Birthday2.innerHTML = "Birthday: " + snapshot.val().birthday;
+        Hobby2.innerHTML = "Hobby: " + snapshot.val().hobby;
+        ProfilePic2.src = snapshot.val().image;
+      } else {
+        alert("No data found");
+      }
+    })
+    .catch((error)=>{
+      alert(error)
+    })
+</script>
+
+</body>
+</html>
